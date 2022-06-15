@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<h1>{{title}}</h1>
+    <form method="get">
+        {{ filter.form }}
+    <button type="submit">Search</button>
+    </form>
+<table>
+    <tr>
+        <th> Номер </th>
+        <th> Название организации </th>
+        <th> Сумма </th>
+        <th> Дата </th>
+    </tr>
+    {% for bill in filter.qs %}
+    <tr>
+        <td>{{ bill.number }}</td>
+        <td>{{ bill.organization.name }}</td>
+        <td>{{ bill.sum_bill }}</td>
+        <td>{{ bill.date_created }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
